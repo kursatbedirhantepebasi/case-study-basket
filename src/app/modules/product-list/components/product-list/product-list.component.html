@@ -1,1 +1,37 @@
-<h1>product list work</h1>
+<h1 class="text-center">Product List</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td></td>
+      <td>Product Name</td>
+      <td>Product Price</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of list$ | async">
+      <td>
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          (click)="addProduct(product)"
+        >
+          <icon-plus-circle></icon-plus-circle>
+        </button>
+      </td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | currency: "TRY" }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <button
+    type="button"
+    class="btn btn-success center"
+    [disabled]="(basketProductList$ | async).length < 1"
+    routerLink="/basket"
+  >
+    {{ "Go to Basket" | uppercase }}
+  </button>
+</div>

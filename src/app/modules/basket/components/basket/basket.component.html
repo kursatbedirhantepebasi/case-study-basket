@@ -1,1 +1,61 @@
-<h1>basket work</h1>
+<form *ngIf="basketProductList.length" [formGroup]="form">
+  <h1 class="text-center">Basket</h1>
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td></td>
+          <td>Product Name</td>
+          <td>Unit Price</td>
+          <td>Quantity</td>
+        </tr>
+      </thead>
+      <tbody formArrayName="products">
+        <tr *ngFor="let product of productsFormArray.controls; index as i">
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteProduct(basketProductList[i])"
+            >
+              <icon-trash-fill></icon-trash-fill>
+            </button>
+          </td>
+          <td>{{ basketProductList[i].name }}</td>
+          <td>{{ basketProductList[i].price | currency: "TRY" }}</td>
+          <td>
+            <input
+              class="form-control w-50"
+              [formControlName]="i"
+              placeholder="Quantity"
+              type="number"
+            />
+
+            <div
+              class="text-danger"
+              *ngIf="
+                productsFormArray.controls[i].errors &&
+                (productsFormArray.controls[i].dirty ||
+                  productsFormArray.controls[i].touched)
+              "
+            >
+              <div *ngIf="productsFormArray.controls[i].errors?.min">
+                should be minimum 1
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <button
+      type="button"
+      class="btn btn-success center"
+      [disabled]="form.invalid"
+      (click)="confirmBasket()"
+    >
+      {{ "Confirm Basket" | uppercase }}
+    </button>
+  </div>
+</form>
