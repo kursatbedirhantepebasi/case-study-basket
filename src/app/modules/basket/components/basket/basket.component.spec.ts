@@ -51,7 +51,9 @@ describe('BasketComponent', () => {
   });
 
   it('table rows length should to be true', () => {
-    const rowHtmlElements = debugElement.nativeElement.querySelectorAll('tbody tr');
+    const rowHtmlElements = debugElement.nativeElement.querySelectorAll(
+      'tbody tr'
+    );
     expect(rowHtmlElements.length).toBe(4);
   });
 
@@ -67,7 +69,9 @@ describe('BasketComponent', () => {
   it('should call deleteProduct function when clicked delete button', () => {
     spyOn(component, 'deleteProduct').and.callThrough();
 
-    const button = debugElement.nativeElement.querySelectorAll('tbody tr td button')[0];
+    const button = debugElement.nativeElement.querySelectorAll(
+      'tbody tr td button'
+    )[0];
     button.click();
 
     expect(component.deleteProduct).toHaveBeenCalledWith({

@@ -21,5 +21,9 @@ export class BasketEffects {
     { dispatch: false }
   );
 
-  constructor(private actions$: Actions, private store: Store<StoreState>, private router: Router) {}
+  constructor(
+    private actions$: Actions,
+    private store: Store<StoreState>,
+    private router: Router
+  ) {}
 }

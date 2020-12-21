@@ -1,15 +1,21 @@
-import {ChangeDetectionStrategy, Component, OnDestroy} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngrx/store';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
-import {Product} from '../../../../shared/models/product.model';
-import {StoreState} from '../../../../shared/models/store.model';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Product } from '../../../../shared/models/product.model';
+import { StoreState } from '../../../../shared/models/store.model';
 
 @Component({
   selector: 'basket',
   templateUrl: './basket.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasketComponent implements OnDestroy {
   basketProductList: Product[];
@@ -24,18 +30,18 @@ export class BasketComponent implements OnDestroy {
     this.store
       .select('basketProductList')
       .pipe(takeUntil(this.destroy$))
-      .subscribe(basketProductList => {
+      .subscribe((basketProductList) => {
         this.basketProductList = basketProductList;
         this.form = this.fb.group({
           products: this.fb.array(
             basketProductList.map(
-              value =>
+              (value) =>
                 new FormControl(value.quantity, [
                   Validators.min(1),
-                  Validators.required
+                  Validators.required,
                 ])
             )
-          )
+          ),
         });
       });
   }
@@ -48,7 +54,7 @@ export class BasketComponent implements OnDestroy {
   deleteProduct(product: Product): void {
     this.store.dispatch({
       type: 'DELETE_PRODUCT',
-      payload: product
+      payload: product,
     });
   }
 

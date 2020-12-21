@@ -51,14 +51,18 @@ describe('ProductListComponent', () => {
   });
 
   it('table rows length should to be true', () => {
-    const rowHtmlElements = debugElement.nativeElement.querySelectorAll('tbody tr');
+    const rowHtmlElements = debugElement.nativeElement.querySelectorAll(
+      'tbody tr'
+    );
     expect(rowHtmlElements.length).toBe(5);
   });
 
   it('should call addProduct function when clicked add button', () => {
     spyOn(component, 'addProduct').and.callThrough();
 
-    const button = debugElement.nativeElement.querySelectorAll('tbody tr td button')[0];
+    const button = debugElement.nativeElement.querySelectorAll(
+      'tbody tr td button'
+    )[0];
     button.click();
 
     expect(component.addProduct).toHaveBeenCalledWith({

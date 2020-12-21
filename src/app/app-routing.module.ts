@@ -9,7 +9,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./modules/product-list/product-list.module').then((m) => m.ProductListModule),
+        loadChildren: () =>
+          import('./modules/product-list/product-list.module').then(
+            (m) => m.ProductListModule
+          ),
       },
     ],
   },
@@ -19,7 +22,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./modules/basket/basket.module').then((m) => m.BasketModule),
+        loadChildren: () =>
+          import('./modules/basket/basket.module').then((m) => m.BasketModule),
       },
     ],
   },

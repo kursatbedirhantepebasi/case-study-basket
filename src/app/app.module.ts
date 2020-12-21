@@ -1,12 +1,12 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from './app.component';
-import {SharedModule} from './shared/shared.module';
-import {AppRoutingModule} from './app-routing.module';
-import {StoreModule} from '@ngrx/store';
-import {getProductList} from './reducers/product-list/product-list.reducer';
-import {addProduct} from './reducers/basket/basket.reducer';
-import {EffectsModule} from '@ngrx/effects';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { getProductList } from './reducers/product-list/product-list.reducer';
+import { addProduct } from './reducers/basket/basket.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 const MODULES = [SharedModule, AppRoutingModule, BrowserModule];
 
@@ -17,10 +17,10 @@ const MODULES = [SharedModule, AppRoutingModule, BrowserModule];
     EffectsModule.forRoot(),
     StoreModule.forRoot({
       list: getProductList,
-      basketProductList: addProduct
-    })
+      basketProductList: addProduct,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

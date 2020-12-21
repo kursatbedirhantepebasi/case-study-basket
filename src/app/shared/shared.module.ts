@@ -1,6 +1,6 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import * as _components from './components';
 
 const COMPONENTS = [
@@ -8,12 +8,12 @@ const COMPONENTS = [
   _components.LayoutComponent,
   _components.IconPlusCircleComponent,
   _components.IconTrashFillComponent,
-  _components.IconBasketComponent
+  _components.IconBasketComponent,
 ];
 
 @NgModule({
   imports: [RouterModule, CommonModule],
   declarations: [...COMPONENTS],
-  exports: [...COMPONENTS, CommonModule]
+  exports: [...COMPONENTS, CommonModule],
 })
 export class SharedModule {}
